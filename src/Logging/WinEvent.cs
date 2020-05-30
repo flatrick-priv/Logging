@@ -22,10 +22,6 @@ namespace Logging
         public LogLevel Level { get => logLevel; }
         #endregion
 
-        #region Strings
-        private readonly string adminPermission = "You need to rerun this application once with elevated permissions!";
-        #endregion
-
         #region Constructors
         /// <summary>
         ///  Ensure that it's impossible to create a WinEvent-object

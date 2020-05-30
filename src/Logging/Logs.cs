@@ -22,8 +22,8 @@ namespace Logging
             {
                 switch (endpoint.Endpoint.ToLower())
                 {
-                    case "logtotext":
-                        endpoints.Add(new LogToText(endpoint.Path,
+                    case "ndjson":
+                        endpoints.Add(new ndJSON(endpoint.Path,
           (LogLevel) Enum.Parse ( typeof(LogLevel), endpoint.LogLevel) ) );
                         break;
                     case "eventlog":

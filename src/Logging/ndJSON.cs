@@ -7,7 +7,7 @@ namespace Logging
     // TODO: logrotate Main log upon either size OR date
     // TODO: a max size for all normal logs should be definable
     // TODO: a min size of free space before stopping service should be definable
-    public class LogToText : ILogs
+    public class ndJSON : ILogs
     {
         #region private variables
         private readonly string PathToLog;
@@ -23,8 +23,8 @@ namespace Logging
         #endregion Properties
 
         #region Constructors
-        private LogToText() { }
-        public LogToText(string Destination, LogLevel level)
+        private ndJSON() { }
+        public ndJSON(string Destination, LogLevel level)
         {
             this.PathToLog = Destination;
             this.mainLog = this.PathToLog + @"\main.jsonl";
@@ -32,6 +32,7 @@ namespace Logging
             this.debugLog = this.PathToLog + @"\debug.jsonl";
             this.traceLog = this.PathToLog + @"\trace.jsonl";
             this.logLevel = level;
+            CreateLogFolderIfMissing();
         }
         #endregion Constructors
 
@@ -82,13 +83,6 @@ namespace Logging
         /// </summary>
         /// <param name="log"></param>
         internal void LogIt(EventObject log, string logFile)
-        {
-            CreateLogFolderIfMissing();
-            WriteData(log, logFile);
-
-        }
-
-        internal void WriteData(EventObject log, string logFile)
         {
             try
             {
